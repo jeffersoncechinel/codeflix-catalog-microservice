@@ -1,6 +1,7 @@
 ## Description
 
-Catalog Microservice (PHP 7.3 - Laravel 6)
+Catalog Microservice for Codeflix a Netflix clone concept.
+This microservice is based in PHP 7.3 with Laravel Framework 6
 
 ## Run Application
 

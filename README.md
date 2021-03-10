@@ -1,6 +1,6 @@
 ## Description
 
-Catalog Microservice
+Catalog Microservice (PHP 7.3 - Laravel 6)
 
 ## Run Application
 

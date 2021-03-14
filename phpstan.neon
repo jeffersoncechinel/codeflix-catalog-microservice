@@ -1,0 +1,12 @@
+parameters:
+    excludes_analyse:
+        - vendor/
+        - */tests/*
+        - _ide_helper.php
+        - _ide_helper_models.php
+        - storage
+        - routes
+    ignoreErrors:
+        - '#Call to an undefined static method [a-zA-Z0-9\\_]+::create\(\)#'
+        - '#Function factory invoked with [a-zA-Z0-9\\_] parameters, 0 required.#'
+

@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\models\Traits\Uuid;
+use App\Models\Traits\Uuid;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 

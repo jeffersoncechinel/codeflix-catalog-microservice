@@ -1,24 +1,24 @@
 <?php
 
-namespace Tests\Unit;
+namespace Tests\Unit\Models;
 
-use App\Models\Category;
+use App\Models\Genre;
 use App\Models\Traits\Uuid;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use PHPUnit\Framework\TestCase;
 
-class CategoryTest extends TestCase
+class GenreTest extends TestCase
 {
+    private $genre;
+
     /**
      * @test
      * @return void
      */
     public function testFillableAttribute()
     {
-        $fillable = ['name', 'description', 'is_active'];
-
-        $model = new Category();
-        $this->assertEquals($fillable, $model->getFillable());
+        $fillable = ['name', 'is_active'];
+        $this->assertEquals($fillable, $this->genre->getFillable());
     }
 
     /**
@@ -29,8 +29,8 @@ class CategoryTest extends TestCase
     {
         $traits = [SoftDeletes::class, Uuid::class];
 
-        $categoryTraits = array_keys(class_uses(Category::class));
-        $this->assertEquals($traits, $categoryTraits);
+        $genreTraits = array_keys(class_uses(Genre::class));
+        $this->assertEquals($traits, $genreTraits);
     }
 
     /**
@@ -39,10 +39,8 @@ class CategoryTest extends TestCase
      */
     public function testCastsAttribute()
     {
-        $cast = ['id' => 'string'];
-
-        $model = new Category();
-        $this->assertEquals($cast, $model->getCasts());
+        $cast = ['id' => 'string', 'is_active' => 'boolean'];
+        $this->assertEquals($cast, $this->genre->getCasts());
     }
 
     /**
@@ -51,8 +49,7 @@ class CategoryTest extends TestCase
      */
     public function testIncrementingAttribute()
     {
-        $model = new Category();
-        $this->assertFalse($model->incrementing);
+        $this->assertFalse($this->genre->incrementing);
     }
 
     /**
@@ -62,11 +59,13 @@ class CategoryTest extends TestCase
     public function testDatesAttribute()
     {
         $dates = ['deleted_at', 'created_at', 'updated_at'];
-
-        $model = new Category();
-
-        $modelDates = array_values($model->getDates());
-
+        $modelDates = array_values($this->genre->getDates());
         $this->assertEquals($dates, $modelDates);
+    }
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->genre = new Genre();
     }
 }
